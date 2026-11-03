@@ -2,7 +2,7 @@ from model_runner import ModelRunner
 
 if __name__ == "__main__":
     # Example usage
-    model_name = "./models/Qwen3-0.6B/"  # Replace with your model name
+    model_name = "/data/models/Qwen3-0.6B/"  # Replace with your model name
     model = ModelRunner(model_name)
     
     prompts = ["Once upon a time",

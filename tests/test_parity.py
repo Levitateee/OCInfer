@@ -1,6 +1,9 @@
+import sys
+sys.path.append('../')
 from model_runner import ModelRunner
 import torch
-model_name = "./models/Qwen3-0.6B/"
+
+model_name = "/data/models/Qwen3-0.6B/"
 engine = ModelRunner(model_name)
 tokenizer = engine.tokenizer
 hf_model = engine.model
@@ -25,8 +28,7 @@ for p in prompts:
             max_new_tokens=MAX_NEW,
             do_sample=False,
             use_cache=False,
-            pad_token_id=tokenizer.eos_token_id,  # 避免某些模型无 pad_token 的警告
-        )  # [1, prompt_len + 实际生成数]
+        )
     
     # 只比较新生成的 token（从 prompt_len 之后开始）
     prompt_len = inputs.shape[1]
